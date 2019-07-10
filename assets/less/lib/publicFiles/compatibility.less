@@ -1,0 +1,54 @@
+/*
+* 浏览器兼容配置
+* 创建于2019/07/04
+*/
+/* 背景 start */
+.background-size(@arguments){ // 背景图大小（100%）
+  -webkit-background-size: @arguments;
+  background-size: @arguments;
+}
+.background-origin(@origin: padding-box){ // 指定background-position属性的相对位置
+  -webkit-background-origin: @origin;
+  background-origin: @origin;
+}
+.background-clip(@clip: border-box){ // 背景绘制区域【border-box: 包括边框; padding-box: 不包括边框; content-box: 不包括padding】
+  -webkit-background-clip: @clip;
+  -moz-background-clip: @clip;
+  background-clip: @clip;
+}
+.filter(@arguments){ // 滤镜
+  -webkit-filter: @arguments;
+  -ms-filter: @arguments;
+  filter: @arguments;
+}
+/* 背景 end */
+
+/* 边框 start */
+// 圆角
+.border-radius(@radius: 50%){
+  -webkit-border-radius: @arguments;
+  -moz-border-radius: @arguments;
+  border-radius: @arguments;
+}
+.box-shadow(@arguments){
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+/* 边框 end */
+
+/* 旋转 */
+.transform(@arguments){
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  -ms-transform: @arguments;
+  -o-transform: @arguments;
+  transform: @arguments;
+}
+
+/* 垂直居中 */
+.flex-direction{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Home",
+  "enablePullDownRefresh": true,
+  "?enablePullDownRefresh": "开启下拉刷新",
+  "usingComponents": {}
+}

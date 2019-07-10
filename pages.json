@@ -1,0 +1,164 @@
+{
+	"pages": [
+		{
+			"ExplainDxzPathExplain": "用户登录页面",
+			"path": "pages/login/UserLogin",
+			"style": {
+				"navigationBarTitleText": "UserLogin",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"ExplainDxzPathExplain": "主页页面",
+			"path": "pages/home/Home",
+			"style": {
+				"navigationBarTitleText": "Home",
+				"enablePullDownRefresh": true,
+				"?enablePullDownRefresh": "开启下拉刷新",
+				"h5": {
+					"titleNView": {},
+					"pullToRefresh": {
+						"color": "#cc3333",
+						"offset": "50px"
+					}
+				}
+			},
+			"?style": "用于设置每个页面的状态栏、导航条、标题、窗口背景色等；页面中配置项会覆盖globalStyle中相同的配置项"
+		},
+		{
+			"ExplainDxzPathExplain": "课程页面",
+			"path": "pages/course/Course",
+			"style": {
+				"navigationBarTitleText": "Course",
+				"enablePullDownRefresh": true,
+				"backgroundTextStyle": "light",
+				"?backgroundTextStyle": "H5没效果，小程序有效果",
+				"h5": {
+					"titleNView": {
+						"//backgroundColor": "#3A73AB",
+						"//searchInput": {
+							"autoFocus": false,
+							"align": "left",
+							"backgroundColor": "#f2f3f5",
+							"borderRadius": "13px",
+							"placeHolder": "关键字",
+							"placeHolderColor": "#cc3333",
+							"disabled": false
+						}
+					},
+					"pullToRefresh": {
+						"color": "#cc3333"
+					}
+				}
+			}
+		},
+			{
+				"ExplainDxzPathExplain": "课程介绍页面",
+				"path": "pages/course/courseSubfile/CoursePresentation",
+				"style": {
+					"navigationBarTitleText": "无人机驾驶员航空知识理论培训",
+					"enablePullDownRefresh": true
+				}
+			},
+		{
+			"ExplainDxzPathExplain": "考核页面",
+			"path": "pages/assess/Assess",
+			"style": {
+				"navigationBarTitleText": "Assess",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"ExplainDxzPathExplain": "我的页面",
+			"path": "pages/my/My",
+			"style": {
+				"navigationBarTitleText": "My",
+				"enablePullDownRefresh": true
+			}
+		},
+			{
+				"ExplainDxzPathExplain": "用户编辑资料页面",
+				"path": "pages/my/userSubfile/UserEditInformation",
+				"style": {
+					"navigationBarTitleText": "编辑资料",
+					"enablePullDownRefresh": true
+				}
+			},
+			{
+				"ExplainDxzPathExplain": "用户设置页面",
+				"path": "pages/my/userSubfile/UserSetting",
+				"style": {
+					"navigationBarTitleText": "设置",
+					"enablePullDownRefresh": true
+				}
+			},
+			{
+				"ExplainDxzPathExplain": "关于页面",
+				"path": "pages/my/userSubfile/About",
+				"style": {
+					"navigationBarTitleText": "关于",
+					"enablePullDownRefresh": true
+				}
+			}
+	],
+	"?pages": "Object，pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages",
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "无人机巡检实训平台",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"?globalStyle": "Object Array，设置默认页面的窗口表现",
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#101010",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+	    "list": [
+			{
+				"pagePath": "pages/home/Home",
+				"iconPath": "./static/images/bottomTabBarImage/home.png",
+				"selectedIconPath": "./static/images/bottomTabBarImage/homeSelect.png",
+				"text": "主页"
+			},
+			{
+				"pagePath": "pages/course/Course",
+				"iconPath": "./static/images/bottomTabBarImage/course.png",
+				"selectedIconPath": "./static/images/bottomTabBarImage/courseSelect.png",
+				"text": "课程"
+			},
+			{
+			 	"pagePath": "pages/assess/Assess",
+			 	"iconPath": "./static/images/bottomTabBarImage/assess.png",
+			 	"selectedIconPath": "./static/images/bottomTabBarImage/assessSelect.png",
+			 	"text": "考核"
+			},
+			{
+				"pagePath": "pages/my/My",
+				"iconPath": "./static/images/bottomTabBarImage/my.png",
+				"selectedIconPath": "./static/images/bottomTabBarImage/mySelect.png",
+				"text": "我的"
+			}
+		]
+	},
+	"?tabBar": "Object，设置底部tab的表现；1：tabbar 的页面展现过一次后就保留在内存中，再次切换 tabbar 页面，只会触发每个页面的onShow，不会再触发onLoad。",
+	"condition": {
+		"current": 0,
+		"?current": "{ // 当前激活的模式（list的索引项） } ",
+		"list": [{
+			"name": "",
+			"?name": "{ // 模式名称 }",
+			"path": "",
+			"?path": "{ // 启动页面，必选 }",
+			"query": "",
+			"?query": "{ // 启动参数，在页面的onLoad函数里得到 }"
+		}]
+	},
+	"?condition": "Object，启动模式配置 { // 模式配置，仅开发期间生效 } ",
+	"subPackages": [],
+	"?subPackages": "Object Array，分包加载配置",
+	"preloadRule": {},
+	"?preloadRule": "Object，分包预下载规则【微信小程序】",
+	"workers": "",
+	"?workers": "String，Worker代码放置的目录【微信小程序】"
+}

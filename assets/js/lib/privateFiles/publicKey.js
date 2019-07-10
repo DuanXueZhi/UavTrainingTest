@@ -1,0 +1,9 @@
+/*
+* create on 2019/7/10.
+* explain: 
+* */
+let publicKey = '"-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCCHbwZCOhcm/pIyKXC1DO/Vdd56jOFBvZXzQaxmBk25OGPMJ2+bVS+/QWQ3oDZ6v1MUVTmI8gUXTcvdqdq7bJNiuX7qhL9UKFDKlEu8Um41BYXq8Eu4GByw91jHbLoVlTC8+6uZgFIuBY3ibPFgld0dBNle3IS4yQLBPeILYPqHQIDAQAB-----END PUBLIC KEY-----"'
+
+export default {
+    publicKey
+}

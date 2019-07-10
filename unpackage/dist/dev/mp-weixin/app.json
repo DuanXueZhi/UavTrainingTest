@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/login/UserLogin",
+    "pages/home/Home",
+    "pages/course/Course",
+    "pages/assess/Assess",
+    "pages/my/My",
+    "pages/my/userSubfile/UserEditInformation",
+    "pages/my/userSubfile/UserSetting"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "无人机巡检实训平台",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#101010",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/Home",
+        "iconPath": "./static/images/bottomTabBar/home.png",
+        "selectedIconPath": "./static/images/bottomTabBar/homeSelect.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/course/Course",
+        "iconPath": "./static/images/bottomTabBar/course.png",
+        "selectedIconPath": "./static/images/bottomTabBar/courseSelect.png",
+        "text": "课程"
+      },
+      {
+        "pagePath": "pages/assess/Assess",
+        "iconPath": "./static/images/bottomTabBar/assess.png",
+        "selectedIconPath": "./static/images/bottomTabBar/assessSelect.png",
+        "text": "考核"
+      },
+      {
+        "pagePath": "pages/my/My",
+        "iconPath": "./static/images/bottomTabBar/my.png",
+        "selectedIconPath": "./static/images/bottomTabBar/mySelect.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "preloadRule": {},
+  "workers": "",
+  "usingComponents": {}
+}

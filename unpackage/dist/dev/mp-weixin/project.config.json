@@ -1,0 +1,42 @@
+{
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.6.4",
+  "appid": "touristappid",
+  "projectname": "UavTraining",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": 0,
+      "?current": "{ // 当前激活的模式（list的索引项） } ",
+      "list": [
+        {
+          "name": "",
+          "?name": "{ // 模式名称 }",
+          "path": "",
+          "?path": "{ // 启动页面，必选 }",
+          "query": "",
+          "?query": "{ // 启动参数，在页面的onLoad函数里得到 }",
+          "id": 0
+        }
+      ]
+    }
+  }
+}

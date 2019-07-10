@@ -1,0 +1,27 @@
+#UserEditInformation.data-v-27f2927c {
+  background: #f6f9f9;
+}
+#UserEditInformation .userEditInformationHeader.data-v-27f2927c {
+  padding: 28rpx 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#UserEditInformation .userEditInformationHeader .userHeaderImage.data-v-27f2927c {
+  padding-left: 20rpx;
+}
+#UserEditInformation .userEditInformationHeader .userHeaderImage > image.data-v-27f2927c {
+  width: 144rpx;
+  height: 144rpx;
+}
+

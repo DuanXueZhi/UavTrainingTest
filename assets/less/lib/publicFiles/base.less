@@ -1,0 +1,36 @@
+/*
+* 基础样式配置【public】
+* 创建于2019/07/02
+*/
+/*距离设置归零*/
+*{padding: 0;margin: 0;}
+/*清除列表格式*/
+li{list-style-type: none;}
+/*清除a标签的下划线*/
+a{text-decoration: none;}
+/*图片垂直居中*/
+img{vertical-align:middle;}
+
+/*页面or界面最顶部说明*/
+.AppAllExplain{
+  color: red;
+  font-weight: 700;
+  text-align: center;
+  display: none;
+}
+
+/* 主色调：深天蓝DeepSkyBlue */
+@color-primary: rgba(0, 191, 225, 1);
+@primaryColor-offset: #666666; // 偏移量
+@color-primary-tint: @color-primary + @primaryColor-offset;
+@color-primary-deep: @color-primary - @primaryColor-offset;
+
+/* 黑色调 */
+@color-black: #333333;
+
+/* 字体颜色 */
+@font-color-black: #101010; // 黑色
+@font-color-tint: rgb(163, 168, 168); // 浅色
+
+/* 背景色调 */
+@background-color-grey: rgb(246, 249, 249); // 灰色

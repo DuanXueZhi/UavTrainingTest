@@ -1,0 +1,154 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*每个页面公共css */
+@font-face {
+  font-family: 'iconfont';  /* project id 1270705 */
+  src: url('https://at.alicdn.com/t/font_1270705_o9qqcwxbrvn.eot');
+  src: url('https://at.alicdn.com/t/font_1270705_o9qqcwxbrvn.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_1270705_o9qqcwxbrvn.woff2') format('woff2'),
+  url('https://at.alicdn.com/t/font_1270705_o9qqcwxbrvn.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_1270705_o9qqcwxbrvn.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_1270705_o9qqcwxbrvn.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-qingchuhuancun:before {
+  content: "\E60E";
+}
+.icon-qunfengtouxiang:before {
+  content: "\E6B5";
+}
+.icon-mima:before {
+  content: "\E60F";
+}
+.icon-yonghuming:before {
+  content: "\E606";
+}
+.icon-tubiao-:before {
+  content: "\E64F";
+}
+.icon-shezhi:before {
+  content: "\E65A";
+}
+.icon-guanyuwomen:before {
+  content: "\E601";
+}
+.icon-kaohe:before {
+  content: "\E63F";
+}
+.icon-kecheng-:before {
+  content: "\E60C";
+}
+.icon-wode:before {
+  content: "\E624";
+}
+.icon-kecheng:before {
+  content: "\E60A";
+}
+.icon-wurenji1:before {
+  content: "\E609";
+}
+    /* 字体图标 */
+    /*
+* 主导入函数配置
+* 创建于2019/07/02
+*/
+    /***********************************************
+ * 变量 函数 全局 兼容
+ **********************************************/
+    /*
+* publicFiles(可移植性公用文件)
+* */
+    /*
+* 基础样式配置【public】
+* 创建于2019/07/02
+*/
+    /*距离设置归零*/
+    /*清除列表格式*/
+._li{list-style-type: none;}
+    /*清除a标签的下划线*/
+._a{text-decoration: none;}
+    /*图片垂直居中*/
+._img{vertical-align:middle;}
+    /*页面or界面最顶部说明*/
+.AppAllExplain{
+  color: red;
+  font-weight: 700;
+  text-align: center;
+  display: none;
+}
+    /* 主色调：深天蓝DeepSkyBlue */
+@color-primary: rgba(0, 191, 225, 1);
+@primaryColor-offset: #666666;
+    /* 偏移量 */
+@color-primary-tint: @color-primary + @primaryColor-offset;
+@color-primary-deep: @color-primary - @primaryColor-offset;
+    /* 黑色调 */
+@color-black: #333333;
+    /* 字体颜色 */
+@font-color-black: #101010;
+    /* 黑色 */
+    /* 全局样式【uni-app必须把.less加上否则找不到】 */
+    /*
+* 浏览器兼容配置
+* 创建于2019/07/04
+*/
+    /* 背景 start */
+.background-size(@arguments){ /* 背景图大小（100%） */
+  background-size: @arguments;
+}
+.background-origin(@origin: padding-box){ /* 指定background-position属性的相对位置 */
+  background-origin: @origin;
+}
+.background-clip(@clip: border-box){ /* 背景绘制区域【border-box: 包括边框; padding-box: 不包括边框; content-box: 不包括padding】 */
+  background-clip: @clip;
+}
+.filter(@arguments){ /* 滤镜 */
+  -webkit-filter: @arguments;
+  -ms-filter: @arguments;
+  filter: @arguments;
+}
+    /* 背景 end */
+    /* 边框 start */
+    /* 圆角 */
+.border-radius(@radius: 50%){
+  border-radius: @arguments;
+}
+.box-shadow(@arguments){
+  -webkit-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+    /* 边框 end */
+    /* 旋转 */
+.transform(@arguments){
+  -webkit-transform: @arguments;
+  -ms-transform: @arguments;
+  transform: @arguments;
+}
+    /* 兼容配置 */
+    /*
+* privateFiles(不可移植性私有定制文件)
+* */
+    /***********************************************
+ * 各模块业务
+ **********************************************/
+    /* less文件 */
+
