@@ -3,7 +3,9 @@
 * explain: 
 * */
 import login from './loginAPI'
+import course from './courseAPI'
 
 export default {
-    login
+    login,
+    course
 }

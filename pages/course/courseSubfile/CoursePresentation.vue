@@ -3,113 +3,49 @@
         <view class="AppAllExplain"><text>{{ msg }}</text></view>
         <view class="coursePresentationHeader">
             <view class="courseImageBox">
-                <image src="../../../static/images/courseImage/1.png"></image>
+                <image :src="imageBaseUrl + courseInfo.CoursePicURL"></image>
             </view>
         </view>
         <view class="coursePresentationBody">
             <view class="navList">
-                <scroll-view class="navListBox" id="tab-bar" scroll-x :scroll-left="scrollLeft">
-                    <view class="navSingleBox"
-                          :class="{ navActive: tabIndex === index }"
-                          v-for="(tab,index) in tabBars"
-                          :key="tab.id"
-                          :id="tab.id"
-                          :data-current="index"
-                          @click="tapTab">
-                        {{tab.name}}
-                    </view>
-                </scroll-view>
+                <view class="navBox" @tap="switchoverCard(1)" :class="{'navActive': showCard === 1}"><text>课程概述</text></view>
+                <view class="navBox" @tap="switchoverCard(2)" :class="{'navActive': showCard === 2}"><text>课程目录</text></view>
             </view>
-            <view class="contentBox">
-                <swiper :current="tabIndex" class="swiper-box" :duration="300" @change="changeTab">
-                    <swiper-item v-for="(tab,index1) in newsitems" :key="index1">
-                        <scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
-                            <view class="uni-tab-bar-loading">
-                                {{tab.loadingText}}{{index1}}
-                            </view>
-                        </scroll-view>
-                    </swiper-item>
-                </swiper>
+            <view class="presentationContentBox">
+                <view class="overviewBox" v-if="showCard === 1">
+                    <view class="overviewTitle"><text>{{ courseInfo.Summary }}</text></view>
+                    <view class="overviewImage"><image :src="imageBaseUrl + courseInfo.RecommendPicUrl"></image></view>
+                </view>
+                <view class="courseCatalogue" v-if="showCard === 2">
+                    <uni-collapse v-for="(courseSectionItem, courseSectionIndex) in catalogueList" :key="courseSectionIndex">
+                        <uni-collapse-item :title="courseSectionIndex + 1 + '.' + courseSectionItem.ChapterTitle" @change="showSubordinateCatalogue(courseSectionItem.ChapterID)">
+                            <view style="padding: 30upx;" v-for="(sonCatalogueItem, sonCatalogueIndex) in courseSectionItem.son" :key="sonCatalogueIndex">{{ sonCatalogueItem.ChapterTitle }}</view>
+                        </uni-collapse-item>
+                    </uni-collapse>
+                </view>
             </view>
+            <view class="joinCourseBtn"><text>加入我的课程</text></view>
         </view>
     </view>
 </template>
 
 <script>
-    const tpl = {
-        data0: {
-            "datetime": "40分钟前",
-            "article_type": 0,
-            "title": "uni-app行业峰会频频亮相，开发者反响热烈!",
-            "source": "DCloud",
-            "comment_count": 639
-        },
-        data1: {
-            "datetime": "一天前",
-            "article_type": 1,
-            "title": "DCloud完成B2轮融资，uni-app震撼发布!",
-            "image_url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg?imageView2/3/w/200/h/100/q/90",
-            "source": "DCloud",
-            "comment_count": 11395
-        },
-        data2: {
-            "datetime": "一天前",
-            "article_type": 2,
-            "title": "中国技术界小奇迹：HBuilder开发者突破200万",
-            "image_url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg?imageView2/3/w/200/h/100/q/90",
-            "source": "DCloud",
-            "comment_count": 11395
-        },
-        data3: {
-            "article_type": 3,
-            "image_list": [{
-                "url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg?imageView2/3/w/200/h/100/q/90",
-                "width": 563,
-                "height": 316
-            }, {
-                "url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg?imageView2/3/w/200/h/100/q/90",
-                "width": 641,
-                "height": 360
-            }, {
-                "url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg?imageView2/3/w/200/h/100/q/90",
-                "width": 640,
-                "height": 360
-            }],
-            "datetime": "5分钟前",
-            "title": "uni-app 支持使用 npm 安装第三方包，生态更趋丰富",
-            "source": "DCloud",
-            "comment_count": 11
-        },
-        data4: {
-            "datetime": "2小时前",
-            "article_type": 4,
-            "title": "uni-app 支持原生小程序自定义组件，更开放、更自由",
-            "image_url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg?imageView2/3/w/200/h/100/q/90",
-            "source": "DCloud",
-            "comment_count": 69
-        }
-    }
+    import {uniCollapse, uniCollapseItem} from '@dcloudio/uni-ui'
+    import apiConfig from '../../../assets/js/lib/privateFiles/api/configAPI'
 
     export default {
+        components: {uniCollapse, uniCollapseItem},
         data () {
             return {
                 msg: '课程介绍页面', // 文件说明
-                scrollLeft: 8,
-                isClickChange: false,
-                tabIndex: 0,
-                newsitems: [],
-                tabBars: [
-                    {
-                        name: '课程概述',
-                        id: 'guanzhu'
-                    }, {
-                        name: '目录',
-                        id: 'tuijian'
-                    }
-                ]
+                showCard: 2,
+                imageBaseUrl: apiConfig.imageBaseUrl,
+                courseID: '', // 课程ID
+                courseInfo: {}, // 课程信息
+                catalogueList: [] // 目录信息
             }
         },
-        onLoad () {
+        onLoad (params) {
             uni.showLoading({
                 title: '加载中...',
                 mask: true,
@@ -120,113 +56,96 @@
                 complete: () => {
                 }
             })
-            this.newsitems = this.randomfn()
-            console.log(this.newsitems)
+            this.courseID = params.CourseID
         },
         onReady () {
             uni.hideLoading({})
+            this.mainIndex()
         },
         methods: {
-            goDetail(e) {
-                uni.navigateTo({
-                    url: '/pages/template/tabbar/detail/detail?title=' + e.title
-                });
-            },
-            close(index1, index2) {
-                uni.showModal({
-                    content: '是否删除本条信息？',
-                    success: (res) => {
-                        if (res.confirm) {
-                            this.newsitems[index1].data.splice(index2, 1);
-                        }
-                    }
+            /*
+            * -----------------------------------------入口函数------------------------------------------
+            * */
+            mainIndex () {
+                let vm = this
+                this.getCoursePresentationByCourseID()
+                this.getCourseCatalogueListDataByCourseID().then(res => {
+                    console.log('获取课程目录通过课程ID', res)
+                    vm.catalogueList = vm.requestCallBackArrange('获取课程目录通过课程ID', res)
                 })
             },
-            loadMore(e) {
-                setTimeout(() => {
-                    this.addData(e);
-                }, 1200);
-            },
-            addData(e) {
-                if (this.newsitems[e].data.length > 30) {
-                    this.newsitems[e].loadingText = '没有更多了';
-                    return;
-                }
-                for (let i = 1; i <= 10; i++) {
-                    this.newsitems[e].data.push(tpl['data' + Math.floor(Math.random() * 5)]);
-                }
-            },
-            async changeTab(e) {
-                let index = e.target.current;
-                if (this.newsitems[index].data.length === 0) {
-                    this.addData(index)
-                }
-                if (this.isClickChange) {
-                    this.tabIndex = index;
-                    this.isClickChange = false;
-                    return;
-                }
-                let tabBar = await this.getElSize("tab-bar"),
-                    tabBarScrollLeft = tabBar.scrollLeft;
-                let width = 0;
-                for (let i = 0; i < index; i++) {
-                    let result = await this.getElSize(this.tabBars[i].id);
-                    width += result.width;
-                }
-                let winWidth = uni.getSystemInfoSync().windowWidth,
-                    nowElement = await this.getElSize(this.tabBars[index].id),
-                    nowWidth = nowElement.width;
-                if (width + nowWidth - tabBarScrollLeft > winWidth) {
-                    this.scrollLeft = width + nowWidth - winWidth;
-                }
-                if (width < tabBarScrollLeft) {
-                    this.scrollLeft = width;
-                }
-                this.isClickChange = false;
-                this.tabIndex = index; //一旦访问data就会出问题
-            },
-            getElSize(id) { //得到元素的size
-                return new Promise((res, rej) => {
-                    // 获取节点相关信息
-                    uni.createSelectorQuery().select("#" + id).fields({
-                        size: true,
-                        scrollOffset: true
-                    }, (data) => {
-                        res(data);
-                    }).exec();
+
+            /*
+            * -----------------------------------------公用------------------------------------------
+            * */
+            /* 获取or请求函数 */
+            // 获取课程简介通过课程ID
+            getCoursePresentationByCourseID () {
+                let vm = this
+                this.$jsFn.apiFn.course.APIGetCoursePresentationByCourseID({CourseID: vm.courseID}).then(res => {
+                    console.log('获取课程简介通过课程ID', res)
+                    vm.courseInfo = vm.requestCallBackArrange('获取课程简介通过课程ID', res)
                 })
             },
-            async tapTab(e) { // 点击tab-bar
-                let tabIndex = e.target.dataset.current
-                if (this.newsitems[tabIndex].data.length === 0) {
-                    this.addData(tabIndex)
-                }
-                if (this.tabIndex === tabIndex) {
-                    return false
+
+            // 获取课程目录通过课程ID
+            getCourseCatalogueListDataByCourseID (parentID) {
+                let vm = this
+                if (parentID) {
+                    return this.$jsFn.apiFn.course.APIGetCourseCatalogueByCourseID({ChapterID: parentID})
                 } else {
-                    let tabBar = await this.getElSize("tab-bar"),
-                        tabBarScrollLeft = tabBar.scrollLeft //点击的时候记录并设置scrollLeft
-                    this.scrollLeft = tabBarScrollLeft
-                    this.isClickChange = true
-                    this.tabIndex = tabIndex
+                    return this.$jsFn.apiFn.course.APIGetCourseCatalogueByCourseID({CourseID: vm.courseID})
                 }
             },
-            randomfn() {
-                let ary = [];
-                for (let i = 0, length = this.tabBars.length; i < length; i++) {
-                    let aryItem = {
-                        loadingText: '加载更多...',
-                        data: []
-                    }
-                    if (i < 1) {
-                        for (let j = 1; j <= 10; j++) {
-                            aryItem.data.push(tpl['data' + Math.floor(Math.random() * 5)])
+            /* 共用 */
+            // 请求回调处理+判断
+            requestCallBackArrange (local, res) {
+                if (res[0] !== null) {
+                    uni.showToast({
+                        title: local + '错误',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                } else {
+                    if (res[1].statusCode === 200) {
+                        if (res[1].data.code === 200) {
+                            uni.showToast({
+                                title: local + res[1].data.message,
+                                icon: 'none',
+                                duration: 2000
+                            })
+                            return res[1].data.data
                         }
                     }
-                    ary.push(aryItem)
+                    uni.showToast({
+                        title: local + res[1].data.message,
+                        icon: 'none',
+                        duration: 2000
+                    })
                 }
-                return ary
+                return []
+            },
+            /*
+            * -----------------------------------------页面操作------------------------------------------
+            * */
+            // 切换卡片
+            switchoverCard (index) {
+                this.showCard = index
+            },
+
+            // 展示下级目录
+            showSubordinateCatalogue (parentID) {
+                console.log('获取下级目录')
+                this.getCourseCatalogueListDataByCourseID(parentID).then(res => {
+                    console.log('展示下级目录', res)
+                })
             }
+            /*
+            * -----------------------------------------图表数据处理+渲染 arrangeData*、makeCharts*------------------------------------------
+            * */
+            /* 数据处理 arrangeData */
+            /* 渲染 makeCharts */
+
         }
     }
 </script>
@@ -252,18 +171,49 @@
         .coursePresentationBody{
             background: #fff;
             .navList{
-                .navListBox{
-                    .navSingleBox{
-                        font-size: 16px;
-                        padding: 20upx 40upx;
-                        float: left;
-                        border-top: 6px solid transparent;
-                        &.navActive{
-                            color: rgba(35, 184, 255, 1);
-                            border-color: rgb(35, 184, 255);
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                .navBox{
+                    font-size: 16px;
+                    padding: 20upx 40upx;
+                    border-top: 6px solid transparent;
+                    &.navActive{
+                        color: rgba(35, 184, 255, 1);
+                        border-color: rgb(35, 184, 255);
+                    }
+                }
+            }
+            .presentationContentBox{
+                .overviewBox{
+                    .overviewTitle{
+                        color: rgb(124, 128, 128);
+                        padding: 20upx;
+                        line-height: 26px;
+                        font-size: 14px;
+                        text-indent: 2em;
+                    }
+                    .overviewImage{
+                        width: 100%;
+                        >image{
+                            width: 100%;
                         }
                     }
                 }
+                .courseCatalogue{
+
+                }
+            }
+            .joinCourseBtn{
+                display: inline-block;
+                position: fixed;
+                bottom: 40upx;
+                right: 10upx;
+                padding: 28upx 50upx;
+                background: rgb(35, 184, 255);
+                color: #fff;
+                font-size: 14px;
+                .border-radius(5px);
             }
         }
     }

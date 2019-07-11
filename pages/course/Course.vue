@@ -7,9 +7,9 @@
             </view>
         </view>
         <view class="courseBody">
-            <view class="courseCardBox" v-for="(courseCardItem, courseCardIndex) in courseCardList" :key="courseCardIndex" :style="{backgroundImage: 'url(' + courseCardItem.backgroundImage + ')'}">
-                <navigator url="courseSubfile/CoursePresentation" hover-class="navigator-hover" open-type="navigate">
-                    <text>{{ courseCardItem.titleText }}</text>
+            <view class="courseCardBox" v-for="(courseCardItem, courseCardIndex) in courseCardList" :key="courseCardIndex" :style="{backgroundImage: 'url(' + imageBaseUrl + courseCardItem.CoursePicURL + ')'}">
+                <navigator :url="'courseSubfile/CoursePresentation?CourseID=' + courseCardItem.CourseID" hover-class="navigator-hover" open-type="navigate">
+                    <text>{{ courseCardItem.CourseName }}</text>
                 </navigator>
             </view>
         </view>
@@ -17,24 +17,14 @@
 </template>
 
 <script>
+    import apiConfig from '../../assets/js/lib/privateFiles/api/configAPI'
+
     export default {
         data () {
             return {
                 msg: '课程页面', // 文件说明
-                courseCardList: [
-                    {
-                        backgroundImage: require('../../static/images/courseImage/1.png'),
-                        titleText: ''
-                    },
-                    {
-                        backgroundImage: require('../../static/images/courseImage/2.png'),
-                        titleText: '无人机入门大疆域2哈苏版实际操作教学'
-                    },
-                    {
-                        backgroundImage: require('../../static/images/courseImage/3.png'),
-                        titleText: '无人机入门大疆域2哈苏版实际操作教学'
-                    }
-                ]
+                imageBaseUrl: apiConfig.imageBaseUrl,
+                courseCardList: []
             }
         },
         onLoad() {
@@ -47,17 +37,72 @@
                 complete: () => {}
             })
         },
-        onShow () {
-            console.log('onShow')
-        },
+        onShow () {},
         onReady () {
-            console.log('onReady')
             uni.hideLoading({})
+            this.mainIndex()
         },
         onReachBottom () {
             console.log('触底')
         },
-        methods: {}
+        methods: {
+            /*
+            * -----------------------------------------入口函数------------------------------------------
+            * */
+            mainIndex () {
+                this.getAllCourse()
+            },
+
+            /*
+            * -----------------------------------------公用------------------------------------------
+            * */
+            /* 获取or请求函数 */
+            // 获取所有课程
+            getAllCourse () {
+                let vm = this
+                this.$jsFn.apiFn.course.APIGetAllCourser({}).then(res => {
+                    console.log('获取所有课程', res)
+                    vm.courseCardList = vm.requestCallBackArrange('获取所有课程', res)
+                })
+            },
+            /* 共用 */
+            // 请求回调处理+判断
+            requestCallBackArrange (local, res) {
+                if (res[0] !== null) {
+                    uni.showToast({
+                        title: local + '错误',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                } else {
+                    if (res[1].statusCode === 200) {
+                        if (res[1].data.code === 200) {
+                            uni.showToast({
+                                title: local + res[1].data.message,
+                                icon: 'none',
+                                duration: 2000
+                            })
+                            return res[1].data.data
+                        }
+                    }
+                    uni.showToast({
+                        title: local + res[1].data.message,
+                        icon: 'none',
+                        duration: 2000
+                    })
+                }
+                return []
+            },
+            /*
+            * -----------------------------------------页面操作------------------------------------------
+            * */
+
+            /*
+            * -----------------------------------------图表数据处理+渲染 arrangeData*、makeCharts*------------------------------------------
+            * */
+            /* 数据处理 arrangeData */
+            /* 渲染 makeCharts */
+        }
     }
 </script>
 
@@ -96,7 +141,7 @@
             }
         }
         .courseBody{
-            padding: 0 32upx;
+            padding: 0 32upx 20upx;
             .courseCardBox{
                 color: #fff;
                 font-size: 18px;

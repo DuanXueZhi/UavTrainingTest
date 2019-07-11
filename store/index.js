@@ -9,14 +9,23 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        token: ''
+        userInformation: {}
+    },
+    getters: { // 监听state变化
+        userInformation (state) {
+            return state.userInformation
+        }
     },
     mutations: {
-        login (state) {
-            console.log('vuex中登录函数触发', state)
-        },
-        logout (state) {
-            console.log('vuex中退出登录函数触发', state)
+        updateUserInformation (state, userInfo) {
+            state.userInformation = userInfo
+        }
+    },
+    actions: {
+        actionsUpdateUserInfo (context, userInfo) {
+            context.commit('updateUserInformation', userInfo)
         }
     }
 })
+
+export default store

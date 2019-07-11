@@ -68,8 +68,7 @@
             "disableHostCheck" : true,
             "proxy" : {
                 "/api" : {
-                    "target" : "http://t.api.ai.airwing.ai",
-					// "target" : "http://t.api.idangjian.cn",
+                    "target" : "http://zjsx.api.airwing.ai/",
                     "changeOrigin" : true,
                     "secure" : false,
                     "pathRewrite" : {

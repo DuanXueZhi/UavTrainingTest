@@ -35,9 +35,9 @@
             return {
                 msg: '用户登录页面', // 文件说明
                 userMsg: {
-                    Account: 258258,
-                    Password: 'Dcy980331',
-                    EnterpriseID: 2019041125
+                    Account: 20190006,
+                    Password: 'AAAAaaaa1234',
+                    EnterpriseID: 2019071045
                 }
             }
         },
@@ -94,6 +94,7 @@
                             })
                             // return res[1].data.data
                             // 私人订制
+                            this.saveUserInformation(res[1].data.data)
                             uni.switchTab({
                                 url: '/pages/home/Home'
                             });
@@ -118,6 +119,11 @@
                 encrypt.setPublicKey(publicKey.publicKey)
                 vm.userMsg.Password = encrypt.encrypt(vm.userMsg.Password)
                 this.getUserLogin()
+            },
+
+            // 储存用户信息
+            saveUserInformation (userInfo) {
+                this.$store.dispatch('actionsUpdateUserInfo', userInfo)
             }
             /*
             * -----------------------------------------图表数据处理+渲染 arrangeData*、makeCharts*------------------------------------------

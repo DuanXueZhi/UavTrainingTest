@@ -5,7 +5,6 @@
 import apiConfig from './configAPI'
 
 const APIUserLogin = (body) => {
-    console.log('参数', body)
     return uni.request({
         url: apiConfig.baseUrl + '/user/login',
         method: 'POST',
