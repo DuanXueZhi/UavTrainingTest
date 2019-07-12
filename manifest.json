@@ -63,19 +63,24 @@
     },
     "h5" : {
         "title" : "无人机巡检实训平台",
-		"devServer" : {
-            "port" : 8080,
+        "devServer" : {
+            "port" : 80,
             "disableHostCheck" : true,
             "proxy" : {
                 "/api" : {
-                    "target" : "http://zjsx.api.airwing.ai/",
+                    "target" : "http://zjsx.api.airwing.ai",
                     "changeOrigin" : true,
                     "secure" : false,
                     "pathRewrite" : {
                         "^/api" : ""
                     }
                 }
-            }
+            },
+            "https" : false
+        },
+        "domain" : "m.zjsx.airwing.ai",
+        "router" : {
+            "base" : ""
         }
     }
 }

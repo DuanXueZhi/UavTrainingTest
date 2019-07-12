@@ -35,8 +35,8 @@
             return {
                 msg: '用户登录页面', // 文件说明
                 userMsg: {
-                    Account: 20190006,
-                    Password: 'AAAAaaaa1234',
+                    Account: '',
+                    Password: '',
                     EnterpriseID: 2019071045
                 }
             }
@@ -72,6 +72,7 @@
                 let vm = this
                 this.$jsFn.apiFn.login.APIUserLogin(vm.userMsg).then(res => {
                     console.log('用户登录返回结果', res)
+					console.log(JSON.stringify(res))
                     vm.requestCallBackArrange('用户登录返回结果', res)
                 })
             },
@@ -185,7 +186,7 @@
             }
         }
         .userLoginFooter{
-            padding: 80upx 60upx 482upx;
+            padding: 80upx 60upx 570upx;
             .loginBtn{
                 height: 40px;
                 line-height: 40px;

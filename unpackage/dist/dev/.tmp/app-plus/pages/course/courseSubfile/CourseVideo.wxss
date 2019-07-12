@@ -1,0 +1,132 @@
+/*
+* 主导入函数配置
+* 创建于2019/07/02
+*/
+/***********************************************
+ * 变量 函数 全局 兼容
+ **********************************************/
+/*
+* publicFiles(可移植性公用文件)
+* */
+/*
+* 基础样式配置【public】
+* 创建于2019/07/02
+*/
+/*距离设置归零*/
+/*清除列表格式*/
+._li.data-v-f9c1e2ec {
+  list-style-type: none;
+}
+/*清除a标签的下划线*/
+._a.data-v-f9c1e2ec {
+  text-decoration: none;
+}
+/*图片垂直居中*/
+._img.data-v-f9c1e2ec {
+  vertical-align: middle;
+}
+/*页面or界面最顶部说明*/
+.AppAllExplain.data-v-f9c1e2ec {
+  color: red;
+  font-weight: 700;
+  text-align: center;
+  display: none;
+}
+/* 主色调：深天蓝DeepSkyBlue */
+/* 黑色调 */
+/* 字体颜色 */
+/* 背景色调 */
+/*
+* 浏览器兼容配置
+* 创建于2019/07/04
+*/
+/* 背景 start */
+/* 背景 end */
+/* 边框 start */
+/* 边框 end */
+/* 旋转 */
+/* 垂直居中 */
+.flex-direction.data-v-f9c1e2ec {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*
+* privateFiles(不可移植性私有定制文件)
+* */
+/***********************************************
+ * 各模块业务
+ **********************************************/
+#CourseVideo.data-v-f9c1e2ec {
+  background: #f6f9f9;
+}
+#CourseVideo .videoBox.data-v-f9c1e2ec {
+  background: #fff;
+  padding-bottom: 28rpx;
+  margin-bottom: 28rpx;
+}
+#CourseVideo .videoBox > video.data-v-f9c1e2ec {
+  width: 100%;
+}
+#CourseVideo .knowledgePoint.data-v-f9c1e2ec {
+  background: #fff;
+  padding: 20rpx;
+  margin-bottom: 28rpx;
+}
+#CourseVideo .knowledgePoint .titleName.data-v-f9c1e2ec {
+  font-size: 16px;
+  color: #c33;
+  padding-bottom: 10px;
+}
+#CourseVideo .knowledgePoint .chapterTitle.data-v-f9c1e2ec {
+  padding: 8rpx 20rpx;
+  font-size: 14px;
+}
+#CourseVideo .knowledgePoint .chapterTitle .titleText.data-v-f9c1e2ec {
+  color: #00bfe1;
+}
+#CourseVideo .knowledgePoint .singleKnowledgePoint.data-v-f9c1e2ec {
+  color: #00bfe1;
+  font-size: 14px;
+  padding: 24rpx 16rpx;
+  margin: 0 30rpx;
+  border-bottom: 1px solid #f7f7f7;
+}
+#CourseVideo .catalogueBox.data-v-f9c1e2ec {
+  background: #fff;
+}
+#CourseVideo .catalogueBox .navList.data-v-f9c1e2ec {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+#CourseVideo .catalogueBox .navList .navBox.data-v-f9c1e2ec {
+  font-size: 16px;
+  padding: 20rpx 40rpx;
+  border-bottom: 6px solid transparent;
+}
+#CourseVideo .catalogueBox .navList .navBox.navActive.data-v-f9c1e2ec {
+  color: #23b8ff;
+  border-color: #23b8ff;
+}
+

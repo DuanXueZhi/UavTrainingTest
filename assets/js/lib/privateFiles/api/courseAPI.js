@@ -49,8 +49,24 @@ const APIGetCourseCatalogueByCourseID = (params) => {
     })
 }
 
+// 获取课程目录中的视频链接通过课程ID
+const APIGetCourseCatalogueVideoByCourseID = (params) => {
+    params.EnterpriseID = apiConfig.store.getters.userInformation.EnterpriseID
+    return uni.request({
+        url: apiConfig.baseUrl + '/training-chapter-manage/training-course-info-list-in',
+        method: 'GET',
+        header: {
+            Authkey: 't.api.ai.airwing.ai',
+            Token: apiConfig.store.getters.userInformation.Token,
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: params
+    })
+}
+
 export default {
     APIGetAllCourser,
     APIGetCoursePresentationByCourseID,
-    APIGetCourseCatalogueByCourseID
+    APIGetCourseCatalogueByCourseID,
+    APIGetCourseCatalogueVideoByCourseID
 }

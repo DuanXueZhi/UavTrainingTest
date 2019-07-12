@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+                CSS.supports('top: constant(a)'))
+            document.write(
+                '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+                (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title>View</title>
+        <style>
+            * {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            input[type="search"i]::-webkit-search-cancel-button {
+                display: none;
+            }
+        </style>
+        <script>
+            var __wxConfig = {"debug":false,"appname":"UavTraining","entryPagePath":"pages/login/UserLogin.html","page":{"pages/login/UserLogin.html":{"window":{"navigationStyle":"custom","usingComponents":{}}},"pages/home/Home.html":{"window":{"navigationBarTitleText":"无人机实训巡检平台","usingComponents":{}}},"pages/course/Course.html":{"window":{"navigationBarTitleText":"课程","backgroundTextStyle":"light","?backgroundTextStyle":"H5没效果，小程序有效果","usingComponents":{}}},"pages/course/courseSubfile/CoursePresentation.html":{"window":{"navigationBarTitleText":"无人机驾驶员航空知识理论培训","enablePullDownRefresh":true,"usingComponents":{"uni-collapse":"/node-modules/@dcloudio/uni-ui/lib/uni-collapse/uni-collapse","uni-collapse-item":"/node-modules/@dcloudio/uni-ui/lib/uni-collapse-item/uni-collapse-item"}}},"pages/course/courseSubfile/CourseAdvertise.html":{"window":{"navigationBarTitleText":"无人机驾驶员航空知识理论培训","enablePullDownRefresh":true,"usingComponents":{}}},"pages/course/courseSubfile/CourseVideo.html":{"window":{"navigationBarTitleText":"无人机驾驶员航空知识理论培训","enablePullDownRefresh":true,"usingComponents":{"uni-collapse":"/node-modules/@dcloudio/uni-ui/lib/uni-collapse/uni-collapse","uni-collapse-item":"/node-modules/@dcloudio/uni-ui/lib/uni-collapse-item/uni-collapse-item"}}},"pages/assess/Assess.html":{"window":{"navigationBarTitleText":"考核","enablePullDownRefresh":true,"usingComponents":{}}},"pages/my/My.html":{"window":{"navigationBarTitleText":"我的","enablePullDownRefresh":true,"usingComponents":{}}},"pages/my/userSubfile/UserEditInformation.html":{"window":{"navigationBarTitleText":"编辑资料","enablePullDownRefresh":true,"usingComponents":{}}},"pages/my/userSubfile/UserSetting.html":{"window":{"navigationBarTitleText":"设置","enablePullDownRefresh":true,"usingComponents":{}}},"pages/my/userSubfile/About.html":{"window":{"navigationBarTitleText":"关于","enablePullDownRefresh":true,"usingComponents":{}}}},"global":{"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"无人机巡检实训平台","navigationBarBackgroundColor":"#F8F8F8","backgroundColor":"#F8F8F8"}},"tabBar":{"color":"#7A7E83","selectedColor":"#101010","backgroundColor":"#ffffff","borderStyle":"black","list":[{"pagePath":"pages/home/Home.html","iconPath":"./static/images/bottomTabBarImage/home.png","selectedIconPath":"./static/images/bottomTabBarImage/homeSelect.png","text":"主页"},{"pagePath":"pages/course/Course.html","iconPath":"./static/images/bottomTabBarImage/course.png","selectedIconPath":"./static/images/bottomTabBarImage/courseSelect.png","text":"课程"},{"pagePath":"pages/assess/Assess.html","iconPath":"./static/images/bottomTabBarImage/assess.png","selectedIconPath":"./static/images/bottomTabBarImage/assessSelect.png","text":"考核"},{"pagePath":"pages/my/My.html","iconPath":"./static/images/bottomTabBarImage/my.png","selectedIconPath":"./static/images/bottomTabBarImage/mySelect.png","text":"我的"}],"position":"bottom"},"networkTimeout":{"request":60000,"connectSocket":60000,"uploadFile":60000,"downloadFile":60000},"platform":"devtools","pages":["pages/login/UserLogin","pages/home/Home","pages/course/Course","pages/course/courseSubfile/CoursePresentation","pages/course/courseSubfile/CourseAdvertise","pages/course/courseSubfile/CourseVideo","pages/assess/Assess","pages/my/My","pages/my/userSubfile/UserEditInformation","pages/my/userSubfile/UserSetting","pages/my/userSubfile/About"],"subPackages":[],"preloadRule":{},"workers":"","splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"compilerVersion":"1.9.9","usingComponents":{}}
+        </script>
+        <script>
+            var __id__ = '';
+            window.__dispatchGenerateFunc__ = function(page) {
+                __id__ = page;
+                document.title = page;
+                // window.history.pushState('', '', page);
+                var wxss = page.replace('.html', '.wxss')
+                if (
+                    typeof __wxAppCode__ !== 'undefined' &&
+                    __wxAppCode__.hasOwnProperty(wxss)
+                ) {
+                    var setCssToHead = __wxAppCode__[wxss]
+                    typeof setCssToHead === 'function' && setCssToHead()
+                    document.dispatchEvent(new CustomEvent("generateFuncReady", {
+                        detail: {
+                            generateFunc: $gwx(page.replace('.html', '.wxml'))
+                        }
+                    }));
+                } else {
+                    plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
+                }
+            };
+        </script>
+        <script src="__uniappes6.js"></script>
+        <script src="uniapp://ready"></script>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+
+</html>

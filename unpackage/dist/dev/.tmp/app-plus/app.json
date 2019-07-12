@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/login/UserLogin",
+    "pages/home/Home",
+    "pages/course/Course",
+    "pages/course/courseSubfile/CoursePresentation",
+    "pages/course/courseSubfile/CourseAdvertise",
+    "pages/course/courseSubfile/CourseVideo",
+    "pages/assess/Assess",
+    "pages/my/My",
+    "pages/my/userSubfile/UserEditInformation",
+    "pages/my/userSubfile/UserSetting",
+    "pages/my/userSubfile/About"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "无人机巡检实训平台",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#101010",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/Home",
+        "iconPath": "./static/images/bottomTabBarImage/home.png",
+        "selectedIconPath": "./static/images/bottomTabBarImage/homeSelect.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/course/Course",
+        "iconPath": "./static/images/bottomTabBarImage/course.png",
+        "selectedIconPath": "./static/images/bottomTabBarImage/courseSelect.png",
+        "text": "课程"
+      },
+      {
+        "pagePath": "pages/assess/Assess",
+        "iconPath": "./static/images/bottomTabBarImage/assess.png",
+        "selectedIconPath": "./static/images/bottomTabBarImage/assessSelect.png",
+        "text": "考核"
+      },
+      {
+        "pagePath": "pages/my/My",
+        "iconPath": "./static/images/bottomTabBarImage/my.png",
+        "selectedIconPath": "./static/images/bottomTabBarImage/mySelect.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "preloadRule": {},
+  "workers": "",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "UavTraining",
+  "compilerVersion": "1.9.9",
+  "usingComponents": {}
+}

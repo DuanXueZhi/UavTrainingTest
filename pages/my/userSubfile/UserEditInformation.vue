@@ -16,11 +16,11 @@
         </view>
         <view class="userEditInformationBody">
             <view class="userBaseInformationList">
-                <view class="singleMsgBox"><text>姓名</text><text class="userMsg">王乐乐</text></view>
+                <view class="singleMsgBox"><text>姓名</text><text class="userMsg">{{ $store.getters.userInformation.Name }}</text></view>
                 <view class="singleMsgBox"><text>部门</text><text class="userMsg">运检部</text></view>
             </view>
             <view class="userEtcInformationList">
-                <view class="singleMsgBox"><text>手机</text><text class="userMsg">18612582536</text></view>
+                <view class="singleMsgBox"><text>手机</text><text class="userMsg">{{ $store.getters.userInformation.Tel }}</text></view>
             </view>
         </view>
     </view>

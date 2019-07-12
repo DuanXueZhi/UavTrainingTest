@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "课程",
+  "backgroundTextStyle": "light",
+  "?backgroundTextStyle": "H5没效果，小程序有效果",
+  "usingComponents": {}
+}

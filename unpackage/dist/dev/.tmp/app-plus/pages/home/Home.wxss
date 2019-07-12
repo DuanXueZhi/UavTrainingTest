@@ -1,0 +1,115 @@
+/*
+* 主导入函数配置
+* 创建于2019/07/02
+*/
+/***********************************************
+ * 变量 函数 全局 兼容
+ **********************************************/
+/*
+* publicFiles(可移植性公用文件)
+* */
+/*
+* 基础样式配置【public】
+* 创建于2019/07/02
+*/
+/*距离设置归零*/
+/*清除列表格式*/
+._li.data-v-df16b61a {
+  list-style-type: none;
+}
+/*清除a标签的下划线*/
+._a.data-v-df16b61a {
+  text-decoration: none;
+}
+/*图片垂直居中*/
+._img.data-v-df16b61a {
+  vertical-align: middle;
+}
+/*页面or界面最顶部说明*/
+.AppAllExplain.data-v-df16b61a {
+  color: red;
+  font-weight: 700;
+  text-align: center;
+  display: none;
+}
+/* 主色调：深天蓝DeepSkyBlue */
+/* 黑色调 */
+/* 字体颜色 */
+/* 背景色调 */
+/*
+* 浏览器兼容配置
+* 创建于2019/07/04
+*/
+/* 背景 start */
+/* 背景 end */
+/* 边框 start */
+/* 边框 end */
+/* 旋转 */
+/* 垂直居中 */
+.flex-direction.data-v-df16b61a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*
+* privateFiles(不可移植性私有定制文件)
+* */
+/***********************************************
+ * 各模块业务
+ **********************************************/
+#Home.data-v-df16b61a {
+  background: url(../../static/img/homeBackgroundImage.4096c288.jpg);
+  background-size: cover;
+  min-height: 768px;
+}
+#Home .homeHeader .titleBox.data-v-df16b61a {
+  color: #fff;
+  text-align: center;
+  padding: 32px 40px;
+  font-size: 28px;
+}
+#Home .homeBody.data-v-df16b61a {
+  font-size: 14px;
+  padding: 20px;
+}
+#Home .homeBody .paragraphCard.data-v-df16b61a {
+  padding: 18rpx 40rpx;
+  margin-bottom: 40rpx;
+  line-height: 26px;
+  border-radius: 8rpx;
+}
+#Home .homeBody .paragraphCard.abstractBox.data-v-df16b61a {
+  background: rgba(255, 255, 255, 0.74);
+}
+#Home .homeBody .paragraphCard.abstractBox .abstractTitleText.data-v-df16b61a {
+  display: block;
+  text-align: center;
+}
+#Home .homeBody .paragraphCard.studyContentBox.data-v-df16b61a {
+  color: #fff;
+  position: relative;
+  background: rgba(153, 204, 204, 0.87);
+  -webkit-box-shadow: #eaebf2 6px 0px 0px 0px;
+  box-shadow: #eaebf2 6px 0px 0px 0px;
+  padding-top: 80rpx;
+  padding-bottom: 60rpx;
+  line-height: 30px;
+}
+#Home .homeBody .paragraphCard.studyContentBox .studyCardTitle.data-v-df16b61a {
+  background: rgba(153, 204, 204, 0.87);
+  position: absolute;
+  top: -10px;
+  left: 0;
+  padding: 16rpx 28rpx;
+}
+

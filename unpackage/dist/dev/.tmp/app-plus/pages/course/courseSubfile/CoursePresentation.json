@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "无人机驾驶员航空知识理论培训",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "uni-collapse": "/node-modules/@dcloudio/uni-ui/lib/uni-collapse/uni-collapse",
+    "uni-collapse-item": "/node-modules/@dcloudio/uni-ui/lib/uni-collapse-item/uni-collapse-item"
+  }
+}

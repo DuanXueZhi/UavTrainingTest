@@ -1,0 +1,14 @@
+#CourseAdvertise .overviewBox .overviewTitle.data-v-4a8dce94 {
+  color: #7c8080;
+  padding: 20rpx;
+  line-height: 26px;
+  font-size: 14px;
+  text-indent: 2em;
+}
+#CourseAdvertise .overviewBox .overviewImage.data-v-4a8dce94 {
+  width: 100%;
+}
+#CourseAdvertise .overviewBox .overviewImage > image.data-v-4a8dce94 {
+  width: 100%;
+}
+

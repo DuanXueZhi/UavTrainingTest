@@ -3,18 +3,15 @@
 		{
 			"ExplainDxzPathExplain": "用户登录页面",
 			"path": "pages/login/UserLogin",
-			"style": {
-				"navigationBarTitleText": "UserLogin",
-				"enablePullDownRefresh": true
+			"style" : {
+				"navigationStyle":"custom"
 			}
 		},
 		{
 			"ExplainDxzPathExplain": "主页页面",
 			"path": "pages/home/Home",
 			"style": {
-				"navigationBarTitleText": "Home",
-				"enablePullDownRefresh": true,
-				"?enablePullDownRefresh": "开启下拉刷新",
+				"navigationBarTitleText": "无人机实训巡检平台",
 				"h5": {
 					"titleNView": {},
 					"pullToRefresh": {
@@ -29,8 +26,7 @@
 			"ExplainDxzPathExplain": "课程页面",
 			"path": "pages/course/Course",
 			"style": {
-				"navigationBarTitleText": "Course",
-				"enablePullDownRefresh": true,
+				"navigationBarTitleText": "课程",
 				"backgroundTextStyle": "light",
 				"?backgroundTextStyle": "H5没效果，小程序有效果",
 				"h5": {
@@ -60,11 +56,27 @@
 					"enablePullDownRefresh": true
 				}
 			},
+				{
+					"ExplainDxzPathExplain": "课程宣传页面",
+					"path": "pages/course/courseSubfile/CourseAdvertise",
+					"style": {
+						"navigationBarTitleText": "无人机驾驶员航空知识理论培训",
+						"enablePullDownRefresh": true
+					}
+				},
+				{
+					"ExplainDxzPathExplain": "课程视频页面",
+					"path": "pages/course/courseSubfile/CourseVideo",
+					"style": {
+						"navigationBarTitleText": "无人机驾驶员航空知识理论培训",
+						"enablePullDownRefresh": true
+					}
+				},
 		{
 			"ExplainDxzPathExplain": "考核页面",
 			"path": "pages/assess/Assess",
 			"style": {
-				"navigationBarTitleText": "Assess",
+				"navigationBarTitleText": "考核",
 				"enablePullDownRefresh": true
 			}
 		},
@@ -72,7 +84,7 @@
 			"ExplainDxzPathExplain": "我的页面",
 			"path": "pages/my/My",
 			"style": {
-				"navigationBarTitleText": "My",
+				"navigationBarTitleText": "我的",
 				"enablePullDownRefresh": true
 			}
 		},

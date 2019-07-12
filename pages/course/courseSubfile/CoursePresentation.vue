@@ -13,18 +13,27 @@
             </view>
             <view class="presentationContentBox">
                 <view class="overviewBox" v-if="showCard === 1">
-                    <view class="overviewTitle"><text>{{ courseInfo.Summary }}</text></view>
-                    <view class="overviewImage"><image :src="imageBaseUrl + courseInfo.RecommendPicUrl"></image></view>
+                    <navigator :url="'CourseAdvertise?CourseID=' + courseID" hover-class="navigator-hover" open-type="navigate">
+                        <view class="overviewTitle"><text>{{ courseInfo.Summary }}</text></view>
+                        <view class="overviewImage"><image :src="imageBaseUrl + courseInfo.RecommendPicUrl"></image></view>
+                    </navigator>
                 </view>
                 <view class="courseCatalogue" v-if="showCard === 2">
-                    <uni-collapse v-for="(courseSectionItem, courseSectionIndex) in catalogueList" :key="courseSectionIndex">
-                        <uni-collapse-item :title="courseSectionIndex + 1 + '.' + courseSectionItem.ChapterTitle" @change="showSubordinateCatalogue(courseSectionItem.ChapterID)">
-                            <view style="padding: 30upx;" v-for="(sonCatalogueItem, sonCatalogueIndex) in courseSectionItem.son" :key="sonCatalogueIndex">{{ sonCatalogueItem.ChapterTitle }}</view>
+                    <uni-collapse>
+                        <uni-collapse-item style="font-size: 14px !important;" v-for="(courseSectionItem, courseSectionIndex) in catalogueList" :key="courseSectionIndex" :title="courseSectionIndex + 1 + '.' + courseSectionItem.ChapterTitle">
+                            <navigator :url="'CourseVideo?CourseID=' + courseID" hover-class="navigator-hover" open-type="navigate">
+                                <view style="padding: 30upx;" v-if="courseSectionItem.son[courseSectionIndex].son === undefined" v-for="(sonCatalogueItem, sonCatalogueIndex) in courseSectionItem.son" :key="sonCatalogueIndex">{{ sonCatalogueItem.ChapterTitle }}</view>
+                            </navigator>
+                            <uni-collapse-item v-if="courseSectionItem.son[courseSectionIndex].son !== undefined" :title="sonCatalogueItem.ChapterTitle" v-for="(sonCatalogueItem, sonCatalogueIndex) in courseSectionItem.son" :key="sonCatalogueIndex">
+                                <navigator :url="'CourseVideo?CourseID=' + courseID" hover-class="navigator-hover" open-type="navigate">
+                                    <view style="padding: 30upx;" v-for="(sonItem, sonIndex) in sonCatalogueItem.son" :key="sonIndex">{{ sonItem.ChapterTitle }}</view>
+                                </navigator>
+                            </uni-collapse-item>
                         </uni-collapse-item>
                     </uni-collapse>
                 </view>
             </view>
-            <view class="joinCourseBtn"><text>加入我的课程</text></view>
+<!--            <view class="joinCourseBtn"><text>加入我的课程</text></view>-->
         </view>
     </view>
 </template>
@@ -67,12 +76,8 @@
             * -----------------------------------------入口函数------------------------------------------
             * */
             mainIndex () {
-                let vm = this
                 this.getCoursePresentationByCourseID()
-                this.getCourseCatalogueListDataByCourseID().then(res => {
-                    console.log('获取课程目录通过课程ID', res)
-                    vm.catalogueList = vm.requestCallBackArrange('获取课程目录通过课程ID', res)
-                })
+                this.getCourseCatalogueListDataByCourseID()
             },
 
             /*
@@ -89,13 +94,12 @@
             },
 
             // 获取课程目录通过课程ID
-            getCourseCatalogueListDataByCourseID (parentID) {
+            getCourseCatalogueListDataByCourseID () {
                 let vm = this
-                if (parentID) {
-                    return this.$jsFn.apiFn.course.APIGetCourseCatalogueByCourseID({ChapterID: parentID})
-                } else {
-                    return this.$jsFn.apiFn.course.APIGetCourseCatalogueByCourseID({CourseID: vm.courseID})
-                }
+                this.$jsFn.apiFn.course.APIGetCourseCatalogueByCourseID({CourseID: vm.courseID}).then(res => {
+                    console.log('获取课程目录通过课程ID', res)
+                    vm.catalogueList = vm.requestCallBackArrange('获取课程目录通过课程ID', res)
+                })
             },
             /* 共用 */
             // 请求回调处理+判断
@@ -131,14 +135,6 @@
             // 切换卡片
             switchoverCard (index) {
                 this.showCard = index
-            },
-
-            // 展示下级目录
-            showSubordinateCatalogue (parentID) {
-                console.log('获取下级目录')
-                this.getCourseCatalogueListDataByCourseID(parentID).then(res => {
-                    console.log('展示下级目录', res)
-                })
             }
             /*
             * -----------------------------------------图表数据处理+渲染 arrangeData*、makeCharts*------------------------------------------
@@ -177,7 +173,7 @@
                 .navBox{
                     font-size: 16px;
                     padding: 20upx 40upx;
-                    border-top: 6px solid transparent;
+                    border-bottom: 6px solid transparent;
                     &.navActive{
                         color: rgba(35, 184, 255, 1);
                         border-color: rgb(35, 184, 255);
@@ -200,11 +196,9 @@
                         }
                     }
                 }
-                .courseCatalogue{
-
-                }
             }
-            .joinCourseBtn{
+            .courseCatalogue{}
+            /*.joinCourseBtn{
                 display: inline-block;
                 position: fixed;
                 bottom: 40upx;
@@ -214,7 +208,7 @@
                 color: #fff;
                 font-size: 14px;
                 .border-radius(5px);
-            }
+            }*/
         }
     }
 </style>

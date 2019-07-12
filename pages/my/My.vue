@@ -12,16 +12,16 @@
                     <image src="../../static/images/defaultHeaderImage/whiteHeadImage.png"></image>
                 </view>
                 <view class="userMsg">
-                    <view><text>王乐乐</text></view>
-                    <view><text>ID：890610</text></view>
+                    <view><text>{{ $store.getters.userInformation.Name }}</text></view>
+                    <view><text>ID：{{ $store.getters.userInformation.UserID }}</text></view>
                 </view>
             </view>
         </view>
         <view class="myBody">
             <view class="operateList">
-                <navigator url="userSubfile/UserEditInformation" hover-class="navigator-hover" open-type="navigate">
-                    <view class="operateBox"><text class="iconfont">&#xe60a;</text><text class="operateText">我的课程</text></view>
-                </navigator>
+<!--                <navigator url="userSubfile/UserEditInformation" hover-class="navigator-hover" open-type="navigate">-->
+<!--                    <view class="operateBox"><text class="iconfont">&#xe60a;</text><text class="operateText">我的课程</text></view>-->
+<!--                </navigator>-->
                 <navigator url="userSubfile/UserSetting" hover-class="navigator-hover" open-type="navigate">
                     <view class="operateBox"><text class="iconfont">&#xe65a;</text><text class="operateText">设置</text></view>
                 </navigator>
@@ -32,7 +32,7 @@
             </view>
             <view class="bodyBottom">
                 <view class="loginOutBox">
-                    <button class="loginOutBtn" type="warn">退出登录</button>
+                    <button class="loginOutBtn" type="warn" @tap="logOut">退出登录</button>
                 </view>
             </view>
         </view>
@@ -61,7 +61,62 @@
         onReady() {
             uni.hideLoading({})
         },
-        methods: {}
+        methods: {
+            /*
+            * -----------------------------------------入口函数------------------------------------------
+            * */
+            mainIndex () {},
+
+            /*
+            * -----------------------------------------公用------------------------------------------
+            * */
+            /* 获取or请求函数 */
+            /* 共用 */
+            // 请求回调处理+判断
+            requestCallBackArrange (local, res) {
+                if (res[0] !== null) {
+                    uni.showToast({
+                        title: local + '错误',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                } else {
+                    if (res[1].statusCode === 200) {
+                        if (res[1].data.code === 200) {
+                            uni.showToast({
+                                title: local + res[1].data.message,
+                                icon: 'none',
+                                duration: 2000
+                            })
+                            return res[1].data.data
+                        }
+                    }
+                    uni.showToast({
+                        title: local + res[1].data.message,
+                        icon: 'none',
+                        duration: 2000
+                    })
+                }
+                return []
+            },
+            /*
+            * -----------------------------------------页面操作------------------------------------------
+            * */
+            // 用户退出
+            logOut () {
+                // 清除用户信息
+                this.$store.dispatch('actionsUpdateUserInfo', {})
+                // 退出到登录页面
+                uni.reLaunch({
+                    url: '/'
+                });
+            }
+            /*
+            * -----------------------------------------图表数据处理+渲染 arrangeData*、makeCharts*------------------------------------------
+            * */
+            /* 数据处理 arrangeData */
+            /* 渲染 makeCharts */
+        }
     }
 </script>
 
